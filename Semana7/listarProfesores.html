@@ -59,9 +59,19 @@
             </caption>
             <tr>
               <th>ID</th>
+              <th>Céudula</th>
+              <th>Correo Electrónico</th>
+              <th>Teléfono</th>
+              <th>Teléfono Celular</th>          
+              <th>Fecha de Nacimiento</th>
+              <th>Sexo</th>
+              <th>Dirección</th>
               <th>Nombre</th>
-              <th>Descripcion</th>
-              <th>Tiempo</th>
+              <th>Apellido Paterno</th>
+              <th>Apellido Materno</th>
+              <th>Nacionalidad</th>
+              <th>Id Carreras</th>
+              <th>Usuario</th>s
             </tr>
           </thead>
           <tbody id="resultados" class="table-group-divider"></tbody>
@@ -88,7 +98,7 @@
     var contenidoTablaResultado = document.querySelector("#resultados");
 
     function cargarDatos() {
-      fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaCurso.php")
+      fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaEstudiantes.php")
         .then((respuesta) => respuesta.json()) //recibe los datos em formato json
         .then((datosrespuesta) => {
           setTable(datosrespuesta.data); //lo envio a la funcion de abajo
@@ -104,9 +114,20 @@
         console.log("valor", valor);
         contenidoTablaResultado.innerHTML += `
           <tr class="table-primary">
+            <td>${valor.id}</td>
+            <td>${valor.cedula}</td>
+            <td>${valor.correoelectronico}</td>
+            <td>${valor.telefono}</td>
+            <td>${valor.telefonocelular}</td>
+            <td>${valor.fechanacimiento}</td>
+            <td>${valor.sexo}</td>
+            <td>${valor.direccion}</td>
             <td>${valor.nombre}</td>
-            <td>${valor.descripcion}</td>
-            <td>${valor.tiempo}</td>
+            <td>${valor.apellidopaterno}</td>
+            <td>${valor.apellidomaterno}</td>
+            <td>${valor.nacionalidad}</td>
+            <td>${valor.idCarreras}</td>          
+            <td>${valor.usuario}</td>
           </tr>`;
       }
     }
