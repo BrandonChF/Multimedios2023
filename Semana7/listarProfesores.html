@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Listar dATOS</title>
+  <title>Listar Datos</title>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -31,13 +31,13 @@
                 <a class="nav-link" href="listarEstudiantes.html">Estudiantes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Profesores</a>
+                <a class="nav-link" href="listarProfesores.html">Profesores</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Grupos</a>
+                <a class="nav-link" href="listarGrupos.html">Grupos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="#">Usuarios</a>
+                <a class="nav-link " href="listarUsuarios.html">Usuarios</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="#">Estudiante por Grupo</a>
@@ -52,7 +52,7 @@
     </header>
     <main>
       <div class="table-responsive">
-        <table class="table table-striped table-hover table-borderless table-primary align-middle">
+        <table class="table table-striped table-hover table-borderless table-success align-middle">
           <thead class="table-light">
             <caption>
               Table Name
@@ -71,7 +71,8 @@
               <th>Apellido Materno</th>
               <th>Nacionalidad</th>
               <th>Id Carreras</th>
-              <th>Usuario</th>s
+              <th>Usuario</th>
+              <th>nacionalidad</th>
             </tr>
           </thead>
           <tbody id="resultados" class="table-group-divider"></tbody>
@@ -98,7 +99,7 @@
     var contenidoTablaResultado = document.querySelector("#resultados");
 
     function cargarDatos() {
-      fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaEstudiantes.php")
+      fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaProfesores.php")
         .then((respuesta) => respuesta.json()) //recibe los datos em formato json
         .then((datosrespuesta) => {
           setTable(datosrespuesta.data); //lo envio a la funcion de abajo
@@ -128,6 +129,7 @@
             <td>${valor.nacionalidad}</td>
             <td>${valor.idCarreras}</td>          
             <td>${valor.usuario}</td>
+            <td>${valor.nacionalidad}</td>
           </tr>`;
       }
     }
