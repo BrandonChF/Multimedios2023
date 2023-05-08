@@ -14,79 +14,78 @@
 </head>
 
 <body>
-  <header>
-    <!-- place navbar here -->
-  </header>
-  <main>
-    <td scope="row">id</td>
-    <td>${valor.nombre}</td>
-    <td>${valor.descripcion}</td>
-    <td>${valor.tiempo}</td>
-<form id="formulario">
-    <div class="mb-3">
-        <label for="" class="form-label">nombre</label>
-        <input type="text"
-          class="form-control" name="mombre" id="mombre" aria-describedby="helpId" placeholder="Ingrese el nombre">
-        <small id="helpId" class="form-text text-muted">Help text</small>
-      </div>
-      <div class="mb-3">
+  <div class="container-fluid">
+    <header>
+      <!-- place navbar here -->
+    </header>
+    <main>
+      <form id="formulario">
+        <div class="mb-3">
+          <label for="" class="form-label">nombre</label>
+          <input type="text" class="form-control" name="mombre" id="mombre" aria-describedby="helpId"
+            placeholder="Ingrese el nombre">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+        <div class="mb-3">
           <label for="" class="form-label">descripcion</label>
-          <input type="text"
-            class="form-control" name="descripcion" id="descripcion" aria-describedby="helpId" placeholder="Ingrese la descripcion">
+          <input type="text" class="form-control" name="descripcion" id="descripcion" aria-describedby="helpId"
+            placeholder="Ingrese la descripcion">
           <small id="helpId" class="form-text text-muted">Help text</small>
         </div>
         <div class="mb-3">
           <label for="" class="form-label">Tiempo</label>
-          <input type="text"
-            class="form-control" name="tiempo" id="tiempo" aria-describedby="helpId" placeholder="Ingrese la descripcion">
+          <input type="text" class="form-control" name="tiempo" id="tiempo" aria-describedby="helpId"
+            placeholder="Ingrese la descripcion">
           <small id="helpId" class="form-text text-muted">Help text</small>
         </div>
         <button type="reset" class="btn btn-danger">Limpiar</button>
         <button type="submit" class="btn btn-primary">Guardar</button>
-</form>
-    
-  </main>
-  <footer>
-    <!-- place footer here -->
-  </footer>
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
+      </form>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
-<script>
-    var formulario= document.getElementById('formulario');
-    formulario.addEventListener('submit', function(e){
+    </main>
+    <footer>
+      <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+      </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+      </script>
+    <script>
+      var formulario = document.getElementById('formulario');
+      formulario.addEventListener('submit', function (e) {
         alert('Salvando...');
         e.preventDefault();
 
-        var datosEnviar={
-            nombre:"React 22", 
-            descripcion:"React Junior", 
-            tiempo:"10 Meses", 
-            usuario:"profesor Mario" 
+        var datosEnviar = {
+          nombre: "React 22",
+          descripcion: "React Junior",
+          tiempo: "10 Meses",
+          usuario: "profesor Mario"
 
-            
+
         }
         console.log(datosEnviar);
 
-        fetch("https://paginas-web-cr.com/ApiPHP/apis/InsertarCursos.php",{
-            method: 'POST',
-            body:JSON.stringify(datosEnviar)
+        fetch("https://paginas-web-cr.com/ApiPHP/apis/InsertarCursos.php", {
+          method: 'POST',
+          body: JSON.stringify(datosEnviar)
         })
-        .then((respuesta) => respuesta.json()) //recibe los datos em formato json
-        .then((datosrespuesta) => {
-          //lo envio a la funcion de abajo
-          // console.log('Datos', datosrespuesta.data);
-        })
-        .catch(console.log);
+          .then((respuesta) => respuesta.json()) //recibe los datos em formato json
+          .then((datosrespuesta) => {
+            //lo envio a la funcion de abajo
+            // console.log('Datos', datosrespuesta.data);
+          })
+          .catch(console.log);
 
 
-    })
-</script>
+      })
+    </script>
+  </div>
+
 
 </body>
 
