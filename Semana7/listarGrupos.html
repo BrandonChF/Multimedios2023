@@ -16,41 +16,7 @@
   <div class="container-fluid">
     <header>
       <!-- place navbar here -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">ApiReact</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
-            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="listarCursos.html">Cursos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="listarEstudiantes.html">Estudiantes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="listarProfesores.html">Profesores</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="listarGrupos.html">Grupos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="listarUsuarios.html">Usuarios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#">Estudiante por Grupo</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#">Profesores por grupo</a>
-              </li>
-            </ul>
-
-          </div>
-        </div>
-      </nav>
+      <div id="contenidoMenu"></div>
     </header>
     <main>
       <div class="table-responsive">
@@ -70,7 +36,7 @@
         </table>
       </div>
     </main>
-    <footer>
+    <footer id="contenidoPie">
       <!-- place footer here -->
     </footer>
   </div>
@@ -83,6 +49,17 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
     crossorigin="anonymous"></script>
+
+
+
+    <script src="Footer y NavBar.js"></script>
+
+    <script>
+      var triggerEl = document.querySelector('#navId')
+      var triggerE2 = document.querySelector('#footer')
+    </script>
+
+
 
   <script>
     //declaracion de variabe
