@@ -122,7 +122,6 @@
       </div>
 
 
-
       <div id="modalCrear" class="modal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -214,9 +213,11 @@
         </div>
       </div>
 
+      <div id="mensajeAltera"></div>
+
     </main>
     <footer id="contenidoPie">
-      
+
     </footer>
   </div>
   <!-- {"id":"377","nombre":"hola leo","descripcion":"sdsd","tiempo":"asasa"}, -->
@@ -245,6 +246,8 @@
 
     //declaracion de variabe
     var contenidoTablaResultado = document.querySelector("#resultados");
+    var colorAlerta;
+    var textoAlerta;
 
     function cargarDatos() {
       fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaCurso.php")
@@ -282,7 +285,17 @@
       setTimeout(() => {
         window.location.reload();
       }, 100);
+    }// fin de la función actualizar pagina
+
+    function desplegarAlerta(colorAlerta, textoAlerta) {
+      //const mensajeAlerta = new bootstrap.Modal(document.getElementById('mensajeAlerta'));
+      var mensajeAlerta = document.querySelector("#mensajeAlerta");
+      var alerta= '<div class="alert alert-'+colorAlerta+'" role="alert">'+textoAlerta+'</div>';
+      mensajeAlerta.innerHTML = alerta;
+      //mensajeAlerta.innerHTML='<div class="alert alert-'+colorAlert+'" role="alert">'+textoAlerta+'</div>';
+      //mensajeAlerta.show();
     }
+
 
     function borrar(id, nombre) {
 
@@ -290,6 +303,7 @@
       modalDelete.show();
       document.getElementById('idBorrar').value = id;
       document.getElementById('nombreBorrar').value = nombre;
+      cambiarAlerta('danger', 'El curso se eliminó correctamente')
 
       var formulario = document.getElementById('formularioBorrar');
       formulario.addEventListener('submit', function (e) {
@@ -307,13 +321,24 @@
             //lo envio a la funcion de abajo
             console.log('Datos', datosrespuesta.data);
           })
+        // var mensajeAlerta = document.querySelector("#mensajeAlerta");
+        // var alerta= '<div class="alert alert-danger" role="alert">El curso se elimino correctamente</div>';
+        // mensajeAlerta.innerHTML = alerta;
         e.preventDefault();
-        alert('El curso se eliminó correctamente +')
+        textoAlerta='El curso se eliminó correctamente'
+        colorAlerta='primary'
         actualizarPagina();
+        
+        desplegarAlerta('primary', 'El curso se eliminó correctamente')
+        
+        
+        
+        //alert('El curso se eliminó correctamente')
+        
 
 
       })
-    }
+    } // fin de la función borrar
 
 
     function editar(id, nombre, descripcion, tiempo, usuario) {
@@ -352,9 +377,9 @@
 
           .catch(console.log);
         e.preventDefault();
-        actualizarPagina()
+        actualizarPagina();
       })
-    }
+    }//fin de la función editar
 
     function crear() {
       const myModal = new bootstrap.Modal(document.getElementById('modalCrear'));
@@ -370,6 +395,8 @@
           descripcion: document.getElementById('crearDescripcion').value,
           tiempo: document.getElementById('crearTiempo').value,
           usuario: document.getElementById('crearUsuario').value
+
+
 
 
         }//fin de la función crear
@@ -390,7 +417,7 @@
         actualizarPagina()
       })
 
-    }
+    }//fin de la función crear
 
     function detalles(id, nombre, descripcion, tiempo, usuario) {
 
@@ -401,7 +428,7 @@
       document.getElementById('detallesDescripcion').value = descripcion;
       document.getElementById('detallesTiempo').value = tiempo;
       document.getElementById('detallesUsuario').value = usuario;
-    }
+    }// fin de la función detalles
 
 
     cargarDatos();
