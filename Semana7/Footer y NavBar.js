@@ -24,11 +24,6 @@ contenidoMenu.innerHTML += `
               <li class="nav-item">
                 <a class="nav-link " href="listarUsuarios.html">Usuarios</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#">Estudiante por Grupo</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#">Profesores por grupo</a>
               </li>
             </ul>
 

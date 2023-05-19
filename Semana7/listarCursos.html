@@ -17,6 +17,7 @@
     <header>
       <!-- place navbar here -->
       <div id="contenidoMenu"></div>
+      <div class="mt-3" id="mensajeAlerta"></div>
     </header>
     <main>
       <div class="table-responsive">
@@ -117,10 +118,10 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
+
           </div>
         </div>
       </div>
-
 
       <div id="modalCrear" class="modal" tabindex="-1">
         <div class="modal-dialog">
@@ -181,27 +182,27 @@
                 <div class="mb-3">
                   <label for="" class="form-label">ID</label>
                   <input type="text" class="form-control" name="mombre" id="detallesId" aria-describedby="helpId"
-                    placeholder="Ingrese el nombre" required readonly>
+                    placeholder="Ingrese el nombre" required disabled>
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Nombre</label>
                   <input type="text" class="form-control" name="mombre" id="detallesNombre" aria-describedby="helpId"
-                    placeholder="Ingrese el nombre" required readonly>
+                    placeholder="Ingrese el nombre" required disabled>
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Descripcion</label>
                   <input type="text" class="form-control" name="descripcion" id="detallesDescripcion"
-                    aria-describedby="helpId" placeholder="Ingrese la descripcion" required readonly>
+                    aria-describedby="helpId" placeholder="Ingrese la descripcion" required disabled>
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Tiempo</label>
                   <input type="text" class="form-control" name="tiempo" id="detallesTiempo" aria-describedby="helpId"
-                    placeholder="Ingrese la descripcion" required readonly>
+                    placeholder="Ingrese la descripcion" required disabled>
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Usuario</label>
                   <input type="text" class="form-control" name="tiempo" id="detallesUsuario" aria-describedby="helpId"
-                    placeholder="Ingrese la descripcion" required readonly>
+                    placeholder="Ingrese la descripcion" required disabled>
                 </div>
 
               </form>
@@ -213,7 +214,7 @@
         </div>
       </div>
 
-      <div id="mensajeAltera"></div>
+
 
     </main>
     <footer id="contenidoPie">
@@ -246,8 +247,8 @@
 
     //declaracion de variabe
     var contenidoTablaResultado = document.querySelector("#resultados");
-    var colorAlerta;
-    var textoAlerta;
+    var cAlerta;
+    var tAlerta;
 
     function cargarDatos() {
       fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaCurso.php")
@@ -290,8 +291,11 @@
     function desplegarAlerta(colorAlerta, textoAlerta) {
       //const mensajeAlerta = new bootstrap.Modal(document.getElementById('mensajeAlerta'));
       var mensajeAlerta = document.querySelector("#mensajeAlerta");
-      var alerta= '<div class="alert alert-'+colorAlerta+'" role="alert">'+textoAlerta+'</div>';
+      //var alerta = '<div class="alert alert-' + colorAlerta + '" role="alert">' + textoAlerta + '</div>';
+      var alerta = '<div class="alert alert-'+colorAlerta+' alert-dismissible fade show" role="alert">'
+        +textoAlerta+'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
       mensajeAlerta.innerHTML = alerta;
+      
       //mensajeAlerta.innerHTML='<div class="alert alert-'+colorAlert+'" role="alert">'+textoAlerta+'</div>';
       //mensajeAlerta.show();
     }
@@ -303,8 +307,10 @@
       modalDelete.show();
       document.getElementById('idBorrar').value = id;
       document.getElementById('nombreBorrar').value = nombre;
-      cambiarAlerta('danger', 'El curso se eliminó correctamente')
-
+      cAlerta = 'danger';
+      tAlerta = 'El curso se eliminó correctamente'
+      desplegarAlerta(cAlerta, tAlerta);
+      
       var formulario = document.getElementById('formularioBorrar');
       formulario.addEventListener('submit', function (e) {
 
@@ -321,23 +327,11 @@
             //lo envio a la funcion de abajo
             console.log('Datos', datosrespuesta.data);
           })
-        // var mensajeAlerta = document.querySelector("#mensajeAlerta");
-        // var alerta= '<div class="alert alert-danger" role="alert">El curso se elimino correctamente</div>';
-        // mensajeAlerta.innerHTML = alerta;
         e.preventDefault();
-        textoAlerta='El curso se eliminó correctamente'
-        colorAlerta='primary'
         actualizarPagina();
-        
-        desplegarAlerta('primary', 'El curso se eliminó correctamente')
-        
-        
-        
         //alert('El curso se eliminó correctamente')
-        
-
-
       })
+
     } // fin de la función borrar
 
 
@@ -378,6 +372,7 @@
           .catch(console.log);
         e.preventDefault();
         actualizarPagina();
+
       })
     }//fin de la función editar
 
@@ -432,6 +427,9 @@
 
 
     cargarDatos();
+
+
+
   </script>
 
 
