@@ -14,10 +14,44 @@
 
 <body>
   <div class="container-fluid">
-    <header>
+    <header id="IdNavBar">
       <!-- place navbar here -->
-      <div id="contenidoMenu"></div>
-      <div class="mt-3" id="mensajeAlerta"></div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="NavPrin">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">ApiReact</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="listarCursos.html">Cursos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="listarEstudiantes.html">Estudiantes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="listarProfesores.html">Profesores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="listarGrupos.html">Grupos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="listarUsuarios.html">Usuarios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#">Estudiante por Grupo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#">Profesores por grupo</a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+
     </header>
     <main>
       <div class="table-responsive">
@@ -27,7 +61,7 @@
         <table class="table table-striped table-hover table-borderless table-Secundary align-middle">
           <thead class="table-light">
             <caption>
-              Cursos
+              Table Name
             </caption>
             <tr>
               <th>ID</th>
@@ -118,10 +152,11 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
-
           </div>
         </div>
       </div>
+
+
 
       <div id="modalCrear" class="modal" tabindex="-1">
         <div class="modal-dialog">
@@ -150,13 +185,7 @@
                   <input type="text" class="form-control" name="tiempo" id="crearTiempo" aria-describedby="helpId"
                     placeholder="Ingrese la descripcion" required>
                   <small id="helpId" class="form-text text-muted">Tiempo del curso</small>
-                </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Usuario</label>
-                  <input type="text" class="form-control" name="tiempo" id="crearUsuario" aria-describedby="helpId"
-                    placeholder="Ingrese la descripcion" required>
-                  <small id="helpId" class="form-text text-muted">Usuario del curso</small>
-                </div>
+                </div>  
                 <button type="reset" class="btn btn-danger">Limpiar</button>
                 <button type="submit" class="btn btn-primary">Guardar</button>
               </form>
@@ -182,27 +211,27 @@
                 <div class="mb-3">
                   <label for="" class="form-label">ID</label>
                   <input type="text" class="form-control" name="mombre" id="detallesId" aria-describedby="helpId"
-                    placeholder="Ingrese el nombre" required disabled>
+                    placeholder="Ingrese el nombre" required readonly>
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Nombre</label>
                   <input type="text" class="form-control" name="mombre" id="detallesNombre" aria-describedby="helpId"
-                    placeholder="Ingrese el nombre" required disabled>
+                    placeholder="Ingrese el nombre" required readonly>
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Descripcion</label>
                   <input type="text" class="form-control" name="descripcion" id="detallesDescripcion"
-                    aria-describedby="helpId" placeholder="Ingrese la descripcion" required disabled>
+                    aria-describedby="helpId" placeholder="Ingrese la descripcion" required readonly>
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Tiempo</label>
                   <input type="text" class="form-control" name="tiempo" id="detallesTiempo" aria-describedby="helpId"
-                    placeholder="Ingrese la descripcion" required disabled>
+                    placeholder="Ingrese la descripcion" required readonly>
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Usuario</label>
                   <input type="text" class="form-control" name="tiempo" id="detallesUsuario" aria-describedby="helpId"
-                    placeholder="Ingrese la descripcion" required disabled>
+                    placeholder="Ingrese la descripcion" required readonly>
                 </div>
 
               </form>
@@ -214,11 +243,9 @@
         </div>
       </div>
 
-
-
     </main>
-    <footer id="contenidoPie">
-
+    <footer>
+      <!-- place footer here -->
     </footer>
   </div>
   <!-- {"id":"377","nombre":"hola leo","descripcion":"sdsd","tiempo":"asasa"}, -->
@@ -231,24 +258,11 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
     crossorigin="anonymous"></script>
 
-
-
-  <script src="Footer y NavBar.js"></script>
+    <script src="menu_footer.js"></script>
 
   <script>
-    var triggerEl = document.querySelector('#navId')
-    var triggerE2 = document.querySelector('#footer')
-  </script>
-
-
-
-  <script>
-
-
     //declaracion de variabe
     var contenidoTablaResultado = document.querySelector("#resultados");
-    var cAlerta;
-    var tAlerta;
 
     function cargarDatos() {
       fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaCurso.php")
@@ -286,20 +300,7 @@
       setTimeout(() => {
         window.location.reload();
       }, 100);
-    }// fin de la función actualizar pagina
-
-    function desplegarAlerta(colorAlerta, textoAlerta) {
-      //const mensajeAlerta = new bootstrap.Modal(document.getElementById('mensajeAlerta'));
-      var mensajeAlerta = document.querySelector("#mensajeAlerta");
-      //var alerta = '<div class="alert alert-' + colorAlerta + '" role="alert">' + textoAlerta + '</div>';
-      var alerta = '<div class="alert alert-'+colorAlerta+' alert-dismissible fade show" role="alert">'
-        +textoAlerta+'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
-      mensajeAlerta.innerHTML = alerta;
-      
-      //mensajeAlerta.innerHTML='<div class="alert alert-'+colorAlert+'" role="alert">'+textoAlerta+'</div>';
-      //mensajeAlerta.show();
     }
-
 
     function borrar(id, nombre) {
 
@@ -307,10 +308,7 @@
       modalDelete.show();
       document.getElementById('idBorrar').value = id;
       document.getElementById('nombreBorrar').value = nombre;
-      cAlerta = 'danger';
-      tAlerta = 'El curso se eliminó correctamente'
-      desplegarAlerta(cAlerta, tAlerta);
-      
+
       var formulario = document.getElementById('formularioBorrar');
       formulario.addEventListener('submit', function (e) {
 
@@ -328,11 +326,12 @@
             console.log('Datos', datosrespuesta.data);
           })
         e.preventDefault();
+        alert('El curso se eliminó correctamente +')
         actualizarPagina();
-        //alert('El curso se eliminó correctamente')
-      })
 
-    } // fin de la función borrar
+
+      })
+    }
 
 
     function editar(id, nombre, descripcion, tiempo, usuario) {
@@ -371,10 +370,9 @@
 
           .catch(console.log);
         e.preventDefault();
-        actualizarPagina();
-
+        actualizarPagina()
       })
-    }//fin de la función editar
+    }
 
     function crear() {
       const myModal = new bootstrap.Modal(document.getElementById('modalCrear'));
@@ -384,14 +382,12 @@
       var formulario = document.getElementById('formularioCrear');
       formulario.addEventListener('submit', function (e) {
         e.preventDefault();
-
+        
         var datosEnviar = {
           nombre: document.getElementById('crearNombre').value,
           descripcion: document.getElementById('crearDescripcion').value,
           tiempo: document.getElementById('crearTiempo').value,
-          usuario: document.getElementById('crearUsuario').value
-
-
+          usuario: 'BrandonChF'
 
 
         }//fin de la función crear
@@ -412,7 +408,7 @@
         actualizarPagina()
       })
 
-    }//fin de la función crear
+    }
 
     function detalles(id, nombre, descripcion, tiempo, usuario) {
 
@@ -423,16 +419,11 @@
       document.getElementById('detallesDescripcion').value = descripcion;
       document.getElementById('detallesTiempo').value = tiempo;
       document.getElementById('detallesUsuario').value = usuario;
-    }// fin de la función detalles
+    }
 
 
     cargarDatos();
-
-
-
   </script>
-
-
 </body>
 
 </html>
