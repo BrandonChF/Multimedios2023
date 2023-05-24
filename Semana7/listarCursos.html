@@ -67,7 +67,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Tiempo</label>
-                  <input type="text" class="form-control" name="tiempo" id="tiempoModal" aria-describedby="helpId"
+                  <input type="number" class="form-control" id="tiempoModal" name="tiempo" min="1" max="24" aria-describedby="helpId"
                     placeholder="Ingrese la descripcion" required>
                   <small id="helpId" class="form-text text-muted">Tiempo del curso</small>
                 </div>
@@ -147,8 +147,8 @@
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Tiempo</label>
-                  <input type="text" class="form-control" name="tiempo" id="crearTiempo" aria-describedby="helpId"
-                    placeholder="Ingrese la descripcion" required>
+                  <input type="number" class="form-control" name="tiempo" id="crearTiempo" min="1" max="24" aria-describedby="helpId"
+                    placeholder="Ingrese la duración del curso (meses)" required>
                   <small id="helpId" class="form-text text-muted">Tiempo del curso</small>
                 </div>
                 <button type="reset" class="btn btn-danger">Limpiar</button>
